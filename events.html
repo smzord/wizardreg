@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <title>React Events</title>
+  </head>
+  <body>
+    <div>
+      <div id="root"></div>
+    </div>
+
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script
+      src="https://unpkg.com/react@18/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+      crossorigin
+    ></script>
+
+    <script type="text/babel">
+      
+
+      class Toggle extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = {isToggleOn: true,mystyle:'red'};
+      
+          // This binding is necessary to make `this` work in the callback
+          this.handleClick = this.handleClick.bind(this);
+        }
+      
+        handleClick() {
+          this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+          }));
+            if(this.state.isToggleOn){
+                this.setState({
+                    mystyle: 'yellow'
+                });
+            }else{
+                this.setState({
+                    mystyle: 'red'
+                });
+            }
+        }
+      
+        render() {
+          return (
+            <button onClick={this.handleClick} style={ { background: `${ this.state.mystyle }` } }>
+              {this.state.isToggleOn ? 'ON' : 'OFF'}
+            </button>
+          );
+        }
+      }
+
+      const root = ReactDOM.createRoot(
+        document.getElementById('root')
+      );
+      root.render(<Toggle/>);
+    </script>
+  </body>
+</html>
