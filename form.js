@@ -93,7 +93,7 @@ class Form extends React.Component {
 
     render() {
         return (
-            <form id="regForm" onSubmit={handleSubmit}>
+            <form id="regForm" onSubmit={this.handleSubmit}>
                 <h1>Register:</h1>
                 <div className="tab">Name:
                 <p><input placeholder="First name..."  /></p>
