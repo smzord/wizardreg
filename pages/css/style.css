@@ -576,6 +576,7 @@
             max-width: 100%;
         }
     }
+    
     @media only screen and (max-width: 376px){
         .leftSectionForm1 input{
             max-width: 315px;
