@@ -56,6 +56,10 @@
       padding: 40px;
       background: #f5f5f5;
     }
+    .divformMain{
+        max-width:870px;
+        margin:auto;
+    }
     .Mainheading{
         margin-top: 30px;
     }
@@ -89,7 +93,11 @@
         color: #000;
         padding: 0 15px 0 40px;
         border:1px solid #000;
+        background-image: url(../img/Vector.png);
+        background-repeat: no-repeat;
+        background-position: 10px;
     }
+    
     .rightSection{
         width: 288px;
         height: 52px;
@@ -142,6 +150,7 @@
         border-radius: 24px;
         font-size: 18px;
         height: 52px;
+        border:none;
     }
     .form3body{
         border-top: 1px solid #d8d8d8;
@@ -384,7 +393,7 @@
         font-size: 12px;
     }
     .form3Submit{
-        width: 428px;
+        max-width: 428px;
         height: 52px;
     }
     .form6button{
@@ -484,11 +493,149 @@
         border-radius: 10px;
       }
 
-
-
-
-
-
     /* media query */
-    @media (max-width: 991px) {}
-    @media (max-width: 767px) {}
+    @media only screen and (max-width:1339px) and (min-width: 1025px) {
+        .formBodySectionForm1 form .leftSectionForm1{
+            margin-right: 16px;
+        }
+    }
+    @media only screen and (max-width: 1024px) and (min-width:769px){
+        .divformMain{
+            max-width: 768px;
+        }
+        .formBodySectionForm1 form{
+            justify-content: flex-start;
+        }
+        .formBodySectionForm1 form .leftSectionForm1{
+            margin-right: 16px;
+        }
+        .leftSectionForm1 input{
+            width:440px;
+        }
+        .formBodySectionForm2 form .formUpper .SectionForm2{
+            width: 100%;
+        }
+        .formBodySectionForm2 form .formUpper .SectionForm2:nth-child(odd){
+            padding-right: 0px;
+        }
+        .formBodySectionForm2 form .formUpper .SectionForm2:nth-child(even){
+            padding-left:0px;
+        }
+        .contactUpperForm .sectionForm5{
+            width: 100%;
+        }
+        .contactUpperForm .sectionForm5:nth-child(odd){
+            padding-right: 0px;
+        }
+        .contactUpperForm .sectionForm5:nth-child(even){
+            padding-left: 0px;
+        }
+        .form2Submit{
+            width:100%;
+        }
+        .modalplan{
+            width: 592px;
+        }
+        .modaltermsCondition{
+            width: 592px;
+        }
+    }
+    @media only screen and (max-width: 768px) and (min-width:377px){
+        .divformMain{
+            max-width: 507px;
+        }
+        .leftSectionForm1{
+            margin-right:16px;
+        }
+        .leftSectionForm1 input{
+            max-width: 377px;
+            width: 100%;
+        }
+        .formBodySectionForm2 form .formUpper .SectionForm2{
+            width: 100%;
+        }
+        .formBodySectionForm2 form .formUpper .SectionForm2:nth-child(odd){
+            padding-right: 0px;
+        }
+        .formBodySectionForm2 form .formUpper .SectionForm2:nth-child(even){
+            padding-left:0px;
+        }
+        .contactUpperForm .sectionForm5{
+            width: 100%;
+        }
+        .contactUpperForm .sectionForm5:nth-child(odd){
+            padding-right: 0px;
+        }
+        .contactUpperForm .sectionForm5:nth-child(even){
+            padding-left: 0px;
+        }
+        .form2Submit{
+            max-width: 100%;
+        }
+        .planButton{
+            max-width: 100%;
+        }
+    }
+    @media only screen and (max-width: 376px){
+        .leftSectionForm1 input{
+            max-width: 315px;
+            margin-bottom:72px;
+            width: 100%;
+        }
+        .wrapper{
+            padding: 10px;
+        }
+        .divformMain{
+            max-width: 323px;
+        }
+        .formBodySectionForm1 form{
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .rightSection{
+            width:100%;
+        }        
+        .formBodySectionForm2 form .formUpper .SectionForm2{
+            width: 100%;
+        }
+        .formBodySectionForm2 form .formUpper .SectionForm2:nth-child(odd){
+            padding-right: 0px;
+        }
+        .formBodySectionForm2 form .formUpper .SectionForm2:nth-child(even){
+            padding-left:0px;
+        }
+        .contactUpperForm .sectionForm5{
+            width: 100%;
+        }
+        .contactUpperForm .sectionForm5:nth-child(odd){
+            padding-right: 0px;
+        }
+        .contactUpperForm .sectionForm5:nth-child(even){
+            padding-left: 0px;
+        }
+        .form2Submit{
+            width: 100%;
+        }
+        .form3buttom{
+            flex-direction:column-reverse;
+        }
+        .form3buttom a{
+            width:100%;
+        }
+        .cardDesc{
+            width: 100%;
+        }
+        .planButton{
+            width: 100%;;
+        }
+        .modalplan .modal-body{
+            padding: 72px 32px 32px 32px;
+        }
+        .form3Submit{
+            width: 100%;
+        }
+        .modaltermsCondition .modal-body{
+            padding:49px 32px 32px 32px;
+        }
+    }
+   
