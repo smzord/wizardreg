@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - Proof of concept: Google Maps Autocomplete</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/1.1.0/tailwind.min.css'>
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<body class="bg-gray-100 leading-normal text-sm">
+  <div class="flex justify-center p-8">
+    <div class="max-w-sm bg-white shadow-lg rounded overflow-hidden">
+      <div class="w-full relative" id="js-preview-map"><img src="https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyC5TSPadLr6a4zfh-myES4Cp_NlMM1o8SU&amp;center=52.5219216,13.4110207&amp;zoom=12&amp;size=480x125&amp;maptype=roadmap&amp;sensor=false" width="480" height="125" alt="Google Maps Berlin"/></div>
+      <div class="w-full float-left border-b-2 border-gray-400 px-6 py-4">
+        <label class="block text-gray-700 text-sm w-full font-semibold mb-2">Address:</label>
+        <input class="w-full bg-gray-200 text-gray-700 appearance-none rounded border-2 border-gray-300 py-2 px-4" type="text" id="address"/>
+      </div>
+      <pre class="w-full bg-gray-200 text-blue-900 float-left px-6 py-4"><code id="js-preview-json"></code></pre>
+    </div>
+  </div>
+  <div class="text-gray-600 text-xs text-center py-2 px-3 fixed bottom-0 right-0 z-10">Made by <a href="https://hofmannsven.com" target="_blank" rel="external noopener">Sven Hofmann</a>.</div>
+</body>
+<!-- partial -->
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyC5TSPadLr6a4zfh-myES4Cp_NlMM1o8SU&amp;libraries=places'></script><script  src="./script.js"></script>
+
+</body>
+</html>
