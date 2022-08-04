@@ -80,8 +80,8 @@ function Home() {
   useEffect(() => {
     // -----------------------Auth------------------------
     var settings = {
-      "async": true,
-      "crossDomain": true,
+      //"async": true,
+      //"crossDomain": true,
       "url": "https://test.salesforce.com/services/oauth2/token",
       "method": "POST",
       "headers": {
