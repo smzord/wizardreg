@@ -82,7 +82,7 @@ function Home() {
     var settings = {
       //"async": true,
       "crossDomain": true,
-      "url": "https://cs226.salesforce.com/services/oauth2/token",
+      "url": "https://test.salesforce.com/services/oauth2/token",
       "method": "POST",
       "headers": {
         "content-type": "application/x-www-form-urlencoded",
