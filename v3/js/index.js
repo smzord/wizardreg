@@ -85,7 +85,7 @@ function Home() {
       "url": "https://cs226.salesforce.com/services/oauth2/token",
       "method": "POST",
       "headers": {
-        "content-type": "application/x-www-form-urlencoded",
+        "content-type": "application/Json",
        // "cache-control": "no-cache",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
