@@ -79,30 +79,31 @@ function Home() {
 
   useEffect(() => {
     // -----------------------Auth------------------------
-    var settings = {
-      //"async": true,
-      "crossDomain": true,
-      "url": "https://cs226.salesforce.com/services/oauth2/token",
-      "method": "POST",
-      "headers": {
-        "content-type": "application/Json",
-       // "cache-control": "no-cache",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
-        "Access-Control-Allow-Headers": "Origin, Content-Type, X-Auth-Token"
+
+    // POST request using fetch()
+    fetch("https://cs226.salesforce.com/services/oauth2/token", {
+      // Adding method type
+      method: "POST",
+      // Adding body or contents to send
+      body: JSON.stringify({
+        grant_type: "password",
+        client_id:
+          "3MVG9AYugMwGAhY6YOdFcGl3JWXogKdopmuWZEbkVptczv5cmca0pHYEk0YgQGGR_W66liQVNYF1LJHs0usp4",
+        client_secret:
+          "954E6DD1A91E4360E00B9C783E413A19C8EAC058ED9649F4979BC633FC5CE4EF",
+        username: "sandeep.singhal@zordial.com.welink.partial",
+        password: "Partialwe#123WLEoJmTEQQAJomzirRB19nZy",
+      }),
+      // Adding headers to the request
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Access-Control-Allow-Origin": "*"
       },
-      "data": {
-        "grant_type": "password",
-        "client_id": "3MVG9AYugMwGAhY6YOdFcGl3JWXogKdopmuWZEbkVptczv5cmca0pHYEk0YgQGGR_W66liQVNYF1LJHs0usp4",
-        "client_secret": "954E6DD1A91E4360E00B9C783E413A19C8EAC058ED9649F4979BC633FC5CE4EF",
-        "username": "sandeep.singhal@zordial.com.welink.partial",
-        "password": "Partialwe#123WLEoJmTEQQAJomzirRB19nZy"
-      }
-    }
-    
-    $.ajax(settings).done(function (response) {
-      console.log(response);
-    });
+    })
+    // Converting to JSON
+    .then(response => response.json())
+    // Displaying results to console
+    .then(json => console.log(json));
     // -------------------------------------------------------
 
     setCookie("cp", "#/", 1);
