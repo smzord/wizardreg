@@ -79,9 +79,7 @@ function Home() {
 
   useEffect(() => {
     // -----------------------Auth------------------------
-
-    // POST request using fetch()
-    fetch("https://cs226.salesforce.com/services/oauth2/token", {
+    fetch("https://test.salesforce.com/services/oauth2/token", {
       // Adding method type
       method: "POST",
       mode: 'no-cors',
@@ -102,7 +100,7 @@ function Home() {
       },
     })
     // Converting to JSON
-    .then(response => response.json())
+    .then(response => console.log(response))
     // Displaying results to console
     .then(json => console.log(json));
     // -------------------------------------------------------
@@ -132,7 +130,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row">
         <div className="col-md-12">
           <div className="divformMain">
