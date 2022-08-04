@@ -87,7 +87,6 @@ function Home() {
       "headers": {
         "content-type": "application/x-www-form-urlencoded",
         "cache-control": "no-cache",
-        "postman-token": "b47a7a04-1b15-6983-1eb7-13e3cc68a218"
       },
       "data": {
         "grant_type": "password",
