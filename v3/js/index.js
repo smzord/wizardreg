@@ -86,7 +86,7 @@ function Home() {
       "method": "POST",
       "headers": {
         "content-type": "application/x-www-form-urlencoded",
-        "cache-control": "no-cache",
+       // "cache-control": "no-cache",
         "Access-Control-Allow-Origin": "*"
       },
       "data": {
