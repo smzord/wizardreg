@@ -85,9 +85,8 @@ function Home() {
       "url": "https://cs226.salesforce.com/services/oauth2/token",
       "method": "POST",
       "headers": {
-        "content-type": "application/x-www-form-urlencoded",
+        "content-type": "application/x-www-form-urlencoded"
        // "cache-control": "no-cache",
-        "Access-Control-Allow-Origin": "*"
       },
       "data": {
         "grant_type": "password",
