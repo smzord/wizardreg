@@ -76,7 +76,7 @@ function Home() {
     }
     return "";
   };
-♥
+
   useEffect(() => {
     // -----------------------Auth------------------------
     var settings = {
