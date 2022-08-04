@@ -81,7 +81,7 @@ function Home() {
     // -----------------------Auth------------------------
     var settings = {
       //"async": true,
-      //"crossDomain": true,
+      "crossDomain": true,
       "url": "https://test.salesforce.com/services/oauth2/token",
       "method": "POST",
       "headers": {
