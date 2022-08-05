@@ -15,7 +15,7 @@ $(document).ready(function () {
     },
     success: function (res) {
       console.log("==res==", res);
-      env = res;
+      env = res.data;
       setCookie("env", res, 0.5);
     },
     error: function (err) {
