@@ -7,7 +7,7 @@ $(document).ready(function () {
     url: baseUrl + "services/apexrest/welinkRegistration",
     method: "POST",
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": "application/x-www-form-urlencoded",
       "cache-control": "no-cache",
     },
     data: {
