@@ -73,6 +73,7 @@ function Home() {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "cache-control": "no-cache",
+        "Authorization": "Bearer " + env,
       },
       data: {
         "action": "validate-address",
@@ -102,6 +103,9 @@ function Home() {
 
 
   useEffect(() => {
+    setTimeout(()=>{
+      env = getCookie('env');
+    },5000); 
     setCookie("cp", "#/", 1);
     const newaddress = document.querySelectorAll("#address")[0];
     //console.log(address)
