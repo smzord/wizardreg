@@ -7,6 +7,8 @@ const Redirect = window.ReactRouterDOM.Redirect;
 const useEffect = React.useEffect;
 const useState = React.useState;
 const baseUrl = 'https://partial-welink.cs226.force.com/welinkreg/';
+var env = getCookie('env');
+
 function App() {
   return (
     <ReactRouterDOM.HashRouter>
