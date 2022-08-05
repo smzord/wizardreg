@@ -10,16 +10,16 @@ $(document).ready(function () {
       "Content-Type": "application/json",
       "cache-control": "no-cache",
     },
-    data: JSON.stringify({
+    data: {
       action: "access-token",
-    }),
+    },
     success: function (res) {
       console.log("==res==", res);
       env = res;
       setCookie("env", res, 0.5);
     },
     error: function (err) {
-      console.log("==err==", err);
+      console.log("==err==", err.responseJSON);
     },
   });
 });
