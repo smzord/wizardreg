@@ -15,7 +15,7 @@ $(document).ready(function () {
         action: "access-token",
       },
       success: function (res) {
-        console.log("==res==", res);
+        console.log("==res==", res.data);
         env = res.data;
         setCookie("env", res, 0.5);
       },
