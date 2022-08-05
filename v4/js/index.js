@@ -100,7 +100,6 @@ function Home() {
         },
         error: function (err) {
           console.log("==err==", err);
-          );
         },
       });
     }
