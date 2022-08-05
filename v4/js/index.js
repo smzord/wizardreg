@@ -83,24 +83,24 @@ function Home() {
   useEffect(() => {
     // -----------------------Auth------------------------
     if (env == null || env == "") {
-      fetch(baseUrl+"services/apexrest/welinkRegistration", {
-      // Adding method type
-      method: "POST",
-      mode: 'no-cors',
-      // Adding body or contents to send
-      body: JSON.stringify({
-        action: "access-token",
-      }),
-      // Adding headers to the request
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "Access-Control-Allow-Origin": "*"
-      },
-    })
-    // Converting to JSON
-    .then(response => console.log(response))
-    // Displaying results to console
-    .then(json => console.log(json));
+      //   fetch(baseUrl+"services/apexrest/welinkRegistration", {
+      //   // Adding method type
+      //   method: "POST",
+      //   mode: 'no-cors',
+      //   // Adding body or contents to send
+      //   body: JSON.stringify({
+      //     action: "access-token",
+      //   }),
+      //   // Adding headers to the request
+      //   headers: {
+      //     "Content-type": "application/json; charset=UTF-8",
+      //     "Access-Control-Allow-Origin": "*"
+      //   },
+      // })
+      // // Converting to JSON
+      // .then(response => console.log(response))
+      // // Displaying results to console
+      // .then(json => console.log(json));
 
       // $.ajax({
       //   async: true,
