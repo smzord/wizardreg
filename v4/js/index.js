@@ -6,7 +6,7 @@ const useHistory = ReactRouterDOM.useHistory;
 const Redirect = window.ReactRouterDOM.Redirect;
 const useEffect = React.useEffect;
 const useState = React.useState;
-
+const baseUrl = 'https://partial-welink.cs226.force.com/welinkreg/';
 function App() {
   return (
     <ReactRouterDOM.HashRouter>
@@ -38,6 +38,22 @@ function nextPath(path) {
   //window.history.pushState('', null, path);
 }
 
+function getCookie(cname){
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(";");
+  for (let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == " ") {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+};
+
 function Home() {
   const [address, setAddress] = useState("");
 
@@ -61,48 +77,33 @@ function Home() {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   };
 
-  const getCookie = (cname) => {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(";");
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == " ") {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  };
 
   useEffect(() => {
     // -----------------------Auth------------------------
-    fetch("https://test.salesforce.com/services/oauth2/token", {
-      // Adding method type
-      method: "POST",
-      mode: 'no-cors',
-      // Adding body or contents to send
-      body: JSON.stringify({
-        grant_type: "password",
-        client_id:
-          "3MVG9AYugMwGAhY6YOdFcGl3JWXogKdopmuWZEbkVptczv5cmca0pHYEk0YgQGGR_W66liQVNYF1LJHs0usp4",
-        client_secret:
-          "954E6DD1A91E4360E00B9C783E413A19C8EAC058ED9649F4979BC633FC5CE4EF",
-        username: "sandeep.singhal@zordial.com.welink.partial",
-        password: "Partialwe#123WLEoJmTEQQAJomzirRB19nZy",
-      }),
-      // Adding headers to the request
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "Access-Control-Allow-Origin": "*"
-      },
-    })
-    // Converting to JSON
-    .then(response => console.log(response))
-    // Displaying results to console
-    .then(json => console.log(json));
+    if (env == null || env == "") {
+      $.ajax({
+        async: true,
+        crossDomain: false,
+        url: baseUrl+"services/apexrest/welinkRegistration",
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "cache-control": "no-cache",
+        },
+        data: JSON.stringify({
+          action: "access-token",
+        }),
+        success: function (res) {
+          console.log("==res==", res);
+          env = res;
+          setCookie("env", res, 0.5);
+        },
+        error: function (err) {
+          console.log("==err==", err);
+          );
+        },
+      });
+    }
     // -------------------------------------------------------
 
     setCookie("cp", "#/", 1);
