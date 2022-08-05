@@ -65,11 +65,32 @@ function Home() {
 
   const handleSumbitForm1 = (e) => {
     event.preventDefault();
-    if (address == "1234567890") {
-      window.location.replace("#/plans");
-    } else {
-      window.location.replace("#/lead");
-    }
+    $.ajax({
+      async: true,
+      crossDomain: false,
+      url: baseUrl + "services/apexrest/welinkRegistration",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "cache-control": "no-cache",
+      },
+      data: {
+        "action": "validate-address",
+        "address": address
+      },
+      success: function (res) {
+        console.log("==res==", res.data);
+        if(res.data == "true"){
+          window.location.replace("#/plans");
+        }else{
+          window.location.replace("#/lead");
+        }
+      },
+      error: function (err) {
+        console.log("==err==", err.responseJSON);
+        window.location.replace("#/lead");
+      },
+    });
   };
 
   const setCookie = (cname, cvalue, exdays) => {
@@ -81,51 +102,6 @@ function Home() {
 
 
   useEffect(() => {
-    // -----------------------Auth------------------------
-    if (env == null || env == "") {
-      //   fetch(baseUrl+"services/apexrest/welinkRegistration", {
-      //   // Adding method type
-      //   method: "POST",
-      //   mode: 'no-cors',
-      //   // Adding body or contents to send
-      //   body: JSON.stringify({
-      //     action: "access-token",
-      //   }),
-      //   // Adding headers to the request
-      //   headers: {
-      //     "Content-type": "application/json; charset=UTF-8",
-      //     "Access-Control-Allow-Origin": "*"
-      //   },
-      // })
-      // // Converting to JSON
-      // .then(response => console.log(response))
-      // // Displaying results to console
-      // .then(json => console.log(json));
-
-      // $.ajax({
-      //   async: true,
-      //   crossDomain: false,
-      //   url: baseUrl+"services/apexrest/welinkRegistration",
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     "cache-control": "no-cache",
-      //   },
-      //   data: JSON.stringify({
-      //     action: "access-token",
-      //   }),
-      //   success: function (res) {
-      //     console.log("==res==", res);
-      //     env = res;
-      //     setCookie("env", res, 0.5);
-      //   },
-      //   error: function (err) {
-      //     console.log("==err==", err);
-      //   },
-      // });
-    }
-    // -------------------------------------------------------
-
     setCookie("cp", "#/", 1);
     const newaddress = document.querySelectorAll("#address")[0];
     //console.log(address)
