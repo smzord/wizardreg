@@ -130,11 +130,7 @@ function Home() {
           required: true,
         },
         success: function (e) {
-          if ($("#address").val() == "1234567890") {
-            window.location.replace("#/plans");
-          } else {
-            window.location.replace("#/lead");
-          }
+          
         },
       },
     });
