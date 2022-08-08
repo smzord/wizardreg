@@ -51,7 +51,7 @@
     ></script>
 
     <script>
-
+      var isload = 0;
       function initAutocomplete() {
         setTimeout(() => {
           address1Field = document.querySelector("#address");
@@ -65,6 +65,7 @@
           });
           address1Field.focus();
           autocomplete.addListener("place_changed", fillInAddress);
+          isload = 1;
         }, 2000);
       }
 
@@ -121,7 +122,9 @@
         window.initAutocomplete = initAutocomplete;
       }, 2000);
       setInterval(() => {
-        initAutocomplete();
+        if(isload!=1){
+          initAutocomplete();
+        }
       }, 2000);
     </script>
   </body>
