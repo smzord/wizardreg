@@ -72,7 +72,7 @@
         const place = autocomplete.getPlace();
         let address1 = "";
         let postcode = "";
-        if(place.address_components){
+        if(place.address_components!=undefined){
           for (const component of place.address_components) {
             // @ts-ignore remove once typings fixed
             const componentType = component.types[0];
