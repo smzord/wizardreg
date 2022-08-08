@@ -87,7 +87,7 @@
               }
 
               case "route": {
-                address1 += component.short_name;
+                address1 += component.short_name+', ';
                 break;
               }
 
@@ -101,10 +101,10 @@
                 break;
               }
               case "locality":
-                address1 += component.long_name;
+                address1 += component.long_name+', ';
                 break;
               case "administrative_area_level_1": {
-                address1 += component.short_name;
+                address1 += component.short_name+', ';
                 break;
               }
               case "country":
