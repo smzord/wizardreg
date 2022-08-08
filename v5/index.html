@@ -72,41 +72,44 @@
         const place = autocomplete.getPlace();
         let address1 = "";
         let postcode = "";
-        for (const component of place.address_components) {
-          // @ts-ignore remove once typings fixed
-          const componentType = component.types[0];
+        if(place.address_components){
+          for (const component of place.address_components) {
+            // @ts-ignore remove once typings fixed
+            const componentType = component.types[0];
 
-          switch (componentType) {
-            case "street_number": {
-              address1 = `${component.long_name} ${address1}`;
-              break;
-            }
+            switch (componentType) {
+              case "street_number": {
+                address1 = `${component.long_name} ${address1}`;
+                break;
+              }
 
-            case "route": {
-              address1 += component.short_name;
-              break;
-            }
+              case "route": {
+                address1 += component.short_name;
+                break;
+              }
 
-            case "postal_code": {
-              postcode = `${component.long_name}${postcode}`;
-              break;
-            }
+              case "postal_code": {
+                postcode = `${component.long_name}${postcode}`;
+                break;
+              }
 
-            case "postal_code_suffix": {
-              postcode = `${postcode}-${component.long_name}`;
-              break;
-            }
-            case "locality":
-              address1 += component.long_name;
-              break;
-            case "administrative_area_level_1": {
-              address1 += component.short_name;
-              break;
-            }
-            case "country":
-              address1 += component.long_name;
-              break;
+              case "postal_code_suffix": {
+                postcode = `${postcode}-${component.long_name}`;
+                break;
+              }
+              case "locality":
+                address1 += component.long_name;
+                break;
+              case "administrative_area_level_1": {
+                address1 += component.short_name;
+                break;
+              }
+              case "country":
+                address1 += component.long_name;
+                break;
           }
+
+        }
         }
 
         address1Field.value = address1;
