@@ -51,18 +51,21 @@
     ></script>
 
     <script>
-      async function initAutocomplete() {
-        address1Field = document.querySelector("#address");
-        //address2Field = document.querySelector("#address2");
-        //postalField = document.querySelector("#postcode");
+      function initAutocomplete() {
+        setTimeout(()=>{
 
-        autocomplete = new google.maps.places.Autocomplete(address1Field, {
-          componentRestrictions: { country: ["us", "ca"] },
-          fields: ["address_components", "geometry"],
-          types: ["address"],
-        });
-        address1Field.focus();
-        autocomplete.addListener("place_changed", fillInAddress);
+          address1Field = document.querySelector("#address");
+          //address2Field = document.querySelector("#address2");
+          //postalField = document.querySelector("#postcode");
+
+          autocomplete = new google.maps.places.Autocomplete(address1Field, {
+            componentRestrictions: { country: ["us", "ca"] },
+            fields: ["address_components", "geometry"],
+            types: ["address"],
+          });
+          address1Field.focus();
+          autocomplete.addListener("place_changed", fillInAddress);
+        },5000);
       }
 
       function fillInAddress() {
