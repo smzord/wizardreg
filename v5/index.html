@@ -121,6 +121,9 @@
       
       setTimeout(()=>{
         window.initAutocomplete = initAutocomplete;
+      },2000);
+      setInterval(()=>{
+        initAutocomplete();
       },5000);
     </script>
   </body>
