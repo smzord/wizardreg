@@ -62,55 +62,7 @@ let address1Field;
 //let address2Field;
 //let postalField;
 
-function initAutocomplete() {
-  address1Field = document.querySelector("#address");
-  //address2Field = document.querySelector("#address2");
-  //postalField = document.querySelector("#postcode");
-  
-  autocomplete = new google.maps.places.Autocomplete(address1Field, {
-    componentRestrictions: { country: ["us", "ca"] },
-    fields: ["address_components", "geometry"],
-    types: ["address"],
-  });
-  address1Field.focus();
-  autocomplete.addListener("place_changed", fillInAddress);
-}
 
-function fillInAddress() {
-  const place = autocomplete.getPlace();
-  let address1 = "";
-  let postcode = "";
-  for (const component of place.address_components) {
-    const componentType = component.types[0];
-
-    switch (componentType) {
-      case "street_number": {
-        address1 = `${component.long_name} ${address1}`;
-        break;
-      }
-      
-      case "route": {
-        address1 += component.short_name;
-        break;
-      }
-
-      case "postal_code": {
-        postcode = `${component.long_name}${postcode}`;
-        break;
-      }
-
-      case "postal_code_suffix": {
-        postcode = `${postcode}-${component.long_name}`;
-        break;
-      }
-    }
-  }
-    
-  address1Field.value = address1;
-  //postalField.value = postcode;
-  //address2Field.focus();
-}
-  
 // ----------------------------Google Autocomplete----------------------------
 function Home() {
   const [address, setAddress] = useState("");
@@ -149,7 +101,7 @@ function Home() {
       },
     });
   };
-
+  
   const setCookie = (cname, cvalue, exdays) => {
     const d = new Date();
     d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
@@ -157,10 +109,58 @@ function Home() {
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
   };
   
+  const initAutocomplete = () => {
+    address1Field = document.querySelector("#address");
+    //address2Field = document.querySelector("#address2");
+    //postalField = document.querySelector("#postcode");
+    
+    autocomplete = new google.maps.places.Autocomplete(address1Field, {
+      componentRestrictions: { country: ["us", "ca"] },
+      fields: ["address_components", "geometry"],
+      types: ["address"],
+    });
+    address1Field.focus();
+    autocomplete.addListener("place_changed", fillInAddress);
+  }
+  
+  const fillInAddress = () => {
+    const place = autocomplete.getPlace();
+    let address1 = "";
+    let postcode = "";
+    for (const component of place.address_components) {
+      const componentType = component.types[0];
+  
+      switch (componentType) {
+        case "street_number": {
+          address1 = `${component.long_name} ${address1}`;
+          break;
+        }
+        
+        case "route": {
+          address1 += component.short_name;
+          break;
+        }
+  
+        case "postal_code": {
+          postcode = `${component.long_name}${postcode}`;
+          break;
+        }
+  
+        case "postal_code_suffix": {
+          postcode = `${postcode}-${component.long_name}`;
+          break;
+        }
+      }
+    }
+      
+    address1Field.value = address1;
+    //postalField.value = postcode;
+    //address2Field.focus();
+  }
   
   useEffect(() => {
     window.initAutocomplete = initAutocomplete;
-
+    
     setTimeout(()=>{
       env = getCookie('env');
     },5000); 
