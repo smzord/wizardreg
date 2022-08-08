@@ -54,17 +54,20 @@
       
       function initAutocomplete() {
         setTimeout(() => {
-          address1Field = document.querySelector("#address");
-          //address2Field = document.querySelector("#address2");
-          //postalField = document.querySelector("#postcode");
+          if(document.querySelector("#address")){
+            address1Field = document.querySelector("#address");
+            //address2Field = document.querySelector("#address2");
+            //postalField = document.querySelector("#postcode");
+  
+            autocomplete = new google.maps.places.Autocomplete(address1Field, {
+              componentRestrictions: { country: ["us", "ca"] },
+              fields: ["address_components", "geometry"],
+              types: ["address"],
+            });
+            address1Field.focus();
+            autocomplete.addListener("place_changed", fillInAddress);
 
-          autocomplete = new google.maps.places.Autocomplete(address1Field, {
-            componentRestrictions: { country: ["us", "ca"] },
-            fields: ["address_components", "geometry"],
-            types: ["address"],
-          });
-          address1Field.focus();
-          autocomplete.addListener("place_changed", fillInAddress);
+          }
         }, 2000);
       }
 
@@ -122,7 +125,7 @@
       }, 2000);
       setInterval(() => {
         initAutocomplete();
-      }, 2000);
+      }, 10000);
     </script>
   </body>
 </html>
