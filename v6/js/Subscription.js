@@ -18,9 +18,56 @@ function getCookie(cname){
   };
 
 function Subscription() {
+  const [firstname, setFirstname] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  
+  const handleFirstnameInput = (e) => {
+    setFirstname(e.target.value);
+  };
+  const handleLastNameInput = (e) => {
+    setLastName(e.target.value);
+  };
+  const handleEmailInput = (e) => {
+    setEmail(e.target.value);
+  };
+  const handlePhoneInput = (e) => {
+    setPhone(e.target.value);
+  };
+
   const handleSumbitForm2 = (e) => {
     event.preventDefault();
-    window.location.replace("#/thanks");
+    
+    $.ajax({
+      async: true,
+      crossDomain: false,
+      url: baseUrl,
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        "cache-control": "no-cache",
+        "Authorization": "Bearer " + env,
+      },
+      data: {
+        "action": "create-subscription",
+        "FirstName": firstname,
+        "LastName": lastName,
+        "Email": email,
+        "Phone": phone,
+        "token": env,
+      },
+      success: function (res) {
+        console.log("==res==", res);
+        if(res.status == 1){
+          setCookie('cp', '#/subscription', 1);
+          window.location.replace("#/thanks");
+        }
+      },
+      error: function (err) {
+        console.log("==err==", err.responseJSON);
+      },
+    });
   };
 
   const goback = (e) => {
@@ -218,7 +265,8 @@ function Subscription() {
                               placeholder="Enter your first name"
                               name="firstname"
                               id="firstname"
-                              className="form-control"
+                              className="form-control"                        
+                              onChange={handleFirstnameInput}
                               required
                             />
                           </div>
@@ -229,7 +277,8 @@ function Subscription() {
                               placeholder="Enter your last name"
                               name="lastname"
                               id="lastname"
-                              className="form-control"
+                              className="form-control"                        
+                              onChange={handleLastNameInput}
                               required
                             />
                           </div>
@@ -240,7 +289,8 @@ function Subscription() {
                               placeholder="Enter your email address"
                               name="email"
                               id="email"
-                              className="form-control"
+                              className="form-control"                        
+                              onChange={handleEmailInput}
                               required
                             />
                           </div>
@@ -251,7 +301,8 @@ function Subscription() {
                               placeholder="e.g. (888) 888-8888"
                               name="phone"
                               id="phone"
-                              className="form-control"
+                              className="form-control"                        
+                              onChange={handlePhoneInput}
                               required
                             />
                           </div>

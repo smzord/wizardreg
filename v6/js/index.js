@@ -6,7 +6,7 @@ const useHistory = ReactRouterDOM.useHistory;
 const Redirect = window.ReactRouterDOM.Redirect;
 const useEffect = React.useEffect;
 const useState = React.useState;
-const baseUrl = 'https://partial-welink.cs226.force.com/welinkreg/';
+const baseUrl = 'https://signup.welink.com/api.php';
 var env = getCookie('env');
 
 function App() {
@@ -76,7 +76,7 @@ function Home() {
     $.ajax({
       async: true,
       crossDomain: false,
-      url: baseUrl + "services/apexrest/welinkRegistration",
+      url: baseUrl,
       method: "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
@@ -85,7 +85,8 @@ function Home() {
       },
       data: {
         "action": "validate-address",
-        "address": address
+        "address": address,
+        "token": env,
       },
       success: function (res) {
         console.log("==res==", res.data);
