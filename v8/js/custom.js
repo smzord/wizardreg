@@ -1,4 +1,4 @@
-$(document).ready(function () { alert()
+$(document).ready(function () { 
   const baseUrl = "https://signup.welink.com/api.php";
   var env = getCookie("env");
   if (env == null || env == "") {
