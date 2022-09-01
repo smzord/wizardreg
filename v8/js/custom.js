@@ -1,7 +1,7 @@
 $(document).ready(function () { 
   const baseUrl = "https://signup.welink.com/api.php";
   var env = getCookie("env");
-  if (env == null || env == "") {
+  if (env == null || env == "") { 
     $.ajax({
       async: true,
       crossDomain: false,
@@ -20,7 +20,7 @@ $(document).ready(function () {
         setCookie("env", env, 0.5);
       },
       error: function (err) {
-        console.log("==err==", err.responseJSON);
+        console.log("==err==", err.responseText);
       },
     });
   }

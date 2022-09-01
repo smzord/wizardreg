@@ -107,7 +107,7 @@ function Subscription() {
     $.ajax({
       "async": true,
       "crossDomain": true,
-      "url": "http://localhost:8070/wizardreg/api.php",
+      "url": baseUrl,
       "method": "POST",
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
