@@ -1,7 +1,7 @@
 <?php
 //Start session to store the access_token generated from Salesforce OAuth and other necessary values
 session_start();
-
+header('Access-Control-Allow-Origin: smzord.github.io');
 //Set Content-Type for Response from Our API
 header("Content-Type:application/x-www-form-urlencoded");
 $baseUrl = "https://welink1--partial.sandbox.my.salesforce-sites.com/welinkreg/services/apexrest/welinkRegistration";
